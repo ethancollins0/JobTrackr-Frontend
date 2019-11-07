@@ -1,0 +1,30 @@
+
+#todo-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .todo-container {
+        width: 100%;
+        display: flex;
+        // flex: 1;
+        justify-content: space-evenly;
+    
+        .todo-list {
+            padding: 5px;
+            width: 20vw; 
+            min-width: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            height: max-content;
+
+            h2 {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                border-bottom: 1px solid black;
+            }
+        }
+    }
+}
