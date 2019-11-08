@@ -1,0 +1,45 @@
+.hidden {
+    opacity: 0;
+}
+
+.active {
+    opacity: 100%;
+}
+
+.create-list-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    // height: 150px;
+    border-bottom: 1px solid black;
+    background: #fff;
+    margin-top: 5px;
+    transition: all .7s ease-in;
+
+    .create-list-item-form {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        input {
+            height: 25px;
+            padding: 0;
+            margin-bottom: 2px;
+            font-family: 'raleway';
+        }
+
+        button {
+            outline: none;
+            border: none;
+            transition: 0.2s;
+            // background: none;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: green;
+        }
+    }
+}

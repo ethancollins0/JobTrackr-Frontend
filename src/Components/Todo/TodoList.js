@@ -1,39 +1,50 @@
-import React from 'react'
+import React, { Component } from 'react'
 import AddItem from './AddItem'
+import CreateListItem from '../CreateForms/CreateListItem'
 
-const ToDoList = ({id, title, items, bgcolor }) => {
+export default class ToDoList extends Component {
 
-    console.log(id)
+    state = {
+        showForm: false
+    }
 
-    console.log(title)
-    let renderItems = () => {
-        return items.map(item => (
-            <div className='todo-list-item'>
+    renderItems = () => {
+        return this.props.items.map(item => (
+            <div className={`todo-list-item ${this.state.showForm ? 'active-todo' : 'inactive-todo'}`}>
                 <h3> {item.name} </h3>
                 <p> { item.description } </p>
             </div>
         ))
     }
 
-    const addItem = () => {
+    addItem = () => {
         console.log('got here')
     }
 
-    return (
-        <div className='todo-list'>
-            <div className='todo-list-title' style={{ background: bgcolor }}>
-                <div className='pushpin-container'>
-                    <img className='pushpin' src={require('../../assets/pushpin.png')} alt='pushpin' />
-                    <div className='edit-list'>
-                        <i class="fas fa-trash-alt fa-lg"></i>
-                    </div>
-                </div>
-                <h2> { title } </h2>
-            </div>
-            <AddItem bgcolor={bgcolor} addItem={addItem} />
-            {renderItems()}
-        </div>
-    )
-}
+    toggleForm = () => {
+        let bool = this.state.showForm
+        this.setState({ showForm: !bool })
+    }
 
-export default ToDoList
+    render(){
+        console.log(this.state.showForm)
+        const {id, title, items, bgcolor } = this.props
+        return (
+        
+            <div className='todo-list'>
+                <div className='todo-list-title' style={{ background: bgcolor }}>
+                    <div className='pushpin-container'>
+                        <img className='pushpin' src={require('../../assets/pushpin.png')} alt='pushpin' />
+                        <div className='edit-list'>
+                            <i className="fas fa-trash-alt fa-lg"></i>
+                        </div>
+                    </div>
+                    <h2> { title } </h2>
+                </div>
+                <AddItem toggleForm={this.toggleForm} bgcolor={bgcolor} />
+                <CreateListItem showForm={this.state.showForm} />
+                {this.renderItems()}
+            </div>
+        )
+    }
+}

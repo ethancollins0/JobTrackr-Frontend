@@ -1,6 +1,13 @@
-
 #add-list-button {
     color: #000;
+}
+
+.active-todo {
+    transform: translateY(0);
+}
+
+.inactive-todo {
+    transform: translateY(-117px);
 }
 
 #add-list-button:hover {
@@ -87,6 +94,7 @@
                 border-bottom: 1px solid black;
                 background: #fff;
                 margin-top: 5px;
+                transition: all .7s ease-in;
             }
         }   
     }

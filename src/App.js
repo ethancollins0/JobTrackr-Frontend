@@ -84,7 +84,7 @@ export default class App extends Component {
           <Route exact path='/todos' render={() => {
             return (
                 <div id='todo-page'>
-                  <i id='add-list-button' class="fas fa-plus-square fa-2x"></i>
+                  <i id='add-list-button' className="fas fa-plus-square fa-2x"></i>
                   <ToDoContainer lists={this.state.lists}/>
                 </div>
               )

@@ -1,10 +1,10 @@
 import React from 'react'
 import './AddItem.scss'
 
-const AddItem = ({ addItem, bgcolor }) => { 
+const AddItem = ({ bgcolor, toggleForm }) => { 
         return (
             <div className='add-todo-list-item' style={{background: bgcolor}}>
-                <i onClick={addItem} class="fas fa-plus-circle fa-2x"></i>
+                <i onClick={toggleForm} className="fas fa-plus-circle fa-2x"></i>
             </div>
         )
 }
