@@ -5,8 +5,8 @@ function Navbar(){
 
 
     return (
-        <div className='navbar' >
-            
+        <div className='navbar'>
+            <h1>JobTrackr</h1>
         </div>
     )
 }

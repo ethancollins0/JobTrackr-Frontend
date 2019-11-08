@@ -1,0 +1,19 @@
+.add-todo-list-item {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid black;
+    color: #000;
+    // background: #fff;
+    // opacity: 40%;
+    margin-top: 0;
+    transition: 0.3s;
+
+    i:hover {
+        // opacity: 100%;
+        cursor: pointer;
+        color: green;
+    }
+}
