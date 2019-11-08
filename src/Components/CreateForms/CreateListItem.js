@@ -5,7 +5,7 @@ export default class CreateListItem extends Component {
 
     state = {
         company: '',
-        job: '',
+        title: '',
         link: ''
     }
 
@@ -16,7 +16,7 @@ export default class CreateListItem extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        console.log(this.state)
+        this.props.createListItem(this.state)
     }
 
 
@@ -29,9 +29,9 @@ export default class CreateListItem extends Component {
                            value={this.state.company} 
                            placeholder='Enter Company'>
                      </input>
-                    <input name='job' 
+                    <input name='title' 
                            onChange={this.handleChange} 
-                           value={this.state.job}
+                           value={this.state.title}
                            placeholder='Enter Job Title'>
                     </input>
                     <input name='link' 

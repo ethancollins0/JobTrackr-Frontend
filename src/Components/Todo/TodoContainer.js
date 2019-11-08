@@ -10,18 +10,19 @@ import './Todo.scss'
 //     '#fff740',
 // ]
 
-function ToDoContainer({ lists }){
+function ToDoContainer({ lists, createListItem, showForm }){
     const renderLists = () => {
         return lists.map(list => (
             <TodoList id={list.title.id} 
                       bgcolor={list.title.color} 
                       title={list.title.name} 
-                      items={list.items} />
+                      items={list.items} 
+                      createListItem={createListItem} />
         ))
     }
 
     return (
-        <div className='todo-container'>
+        <div className={`todo-container ${showForm ? 'active-todo' : 'inactive-todo'}`}>
             {renderLists()}
         </div>
     )

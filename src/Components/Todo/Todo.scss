@@ -7,7 +7,7 @@
 }
 
 .inactive-todo {
-    transform: translateY(-117px);
+    transform: translateY(-156px);
 }
 
 #add-list-button:hover {
@@ -26,6 +26,7 @@
         // flex: 1;
         justify-content: space-evenly;
         flex-wrap: wrap;
+        transition: all .7s ease-in-out;
     
         .todo-list {
             margin-top: 20px;
@@ -94,7 +95,7 @@
                 border-bottom: 1px solid black;
                 background: #fff;
                 margin-top: 5px;
-                transition: all .7s ease-in;
+                transition: all .7s ease-in-out;
             }
         }   
     }

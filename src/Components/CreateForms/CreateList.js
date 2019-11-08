@@ -9,7 +9,7 @@ export default class CreateList extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        console.log(this.state)
+        this.props.createList(this.state)
     }
 
     handleChange = (event) => {
@@ -19,10 +19,10 @@ export default class CreateList extends Component {
     
     render (){
         return (
-            <div className='create-list-form-container'>
+            <div className={`create-list-form-container ${this.props.showForm ? 'active' : 'hidden'}`}>
                 <form onSubmit={this.handleSubmit} className='create-list-form'>
-                    <input name='name' placeholder='Enter List Name' value={this.state.name} onChange='this.handleChange'></input>
-                    <input name='color' placeholder='Enter List Color' value={this.state.color} onChange='this.handleChange'></input>
+                    <input name='name' placeholder='Enter List Name' value={this.state.name} onChange={this.handleChange}></input>
+                    <input name='color' placeholder='Enter List Color' value={this.state.color} onChange={this.handleChange}></input>
                     <button>Submit</button>
                 </form>
             </div>

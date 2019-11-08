@@ -9,10 +9,12 @@ export default class ToDoList extends Component {
     }
 
     renderItems = () => {
-        return this.props.items.map(item => (
+        let items = this.props.items.sort((a, b) => b.id - a.id) 
+        return items.map(item => (
             <div className={`todo-list-item ${this.state.showForm ? 'active-todo' : 'inactive-todo'}`}>
-                <h3> {item.name} </h3>
-                <p> { item.description } </p>
+                <h3> {item.company} </h3>
+                <p> { item.title} </p>
+                <p> { item.date} </p>
             </div>
         ))
     }
@@ -26,9 +28,14 @@ export default class ToDoList extends Component {
         this.setState({ showForm: !bool })
     }
 
+    createListItem = (form) => {
+        this.toggleForm()
+        form['list_id'] = this.props.id
+        this.props.createListItem(form)
+    }
+
     render(){
-        console.log(this.state.showForm)
-        const {id, title, items, bgcolor } = this.props
+        const {title, bgcolor } = this.props
         return (
         
             <div className='todo-list'>
@@ -42,7 +49,7 @@ export default class ToDoList extends Component {
                     <h2> { title } </h2>
                 </div>
                 <AddItem toggleForm={this.toggleForm} bgcolor={bgcolor} />
-                <CreateListItem showForm={this.state.showForm} />
+                <CreateListItem createListItem={this.createListItem} showForm={this.state.showForm} />
                 {this.renderItems()}
             </div>
         )
