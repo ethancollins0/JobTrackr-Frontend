@@ -43,7 +43,7 @@ export default class ToDoList extends Component {
                     <div className='pushpin-container'>
                         <img className='pushpin' src={require('../../assets/pushpin.png')} alt='pushpin' />
                         <div className='edit-list'>
-                            <i className="fas fa-trash-alt fa-lg"></i>
+                            <i onClick={() => this.props.deleteList(this.props.id)} className="fas fa-trash-alt fa-lg"></i>
                         </div>
                     </div>
                     <h2> { title } </h2>

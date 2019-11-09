@@ -10,14 +10,15 @@ import './Todo.scss'
 //     '#fff740',
 // ]
 
-function ToDoContainer({ lists, createListItem, showForm }){
+function ToDoContainer({ lists, createListItem, showForm, deleteList }){
     const renderLists = () => {
         return lists.map(list => (
             <TodoList id={list.title.id} 
                       bgcolor={list.title.color} 
                       title={list.title.name} 
                       items={list.items} 
-                      createListItem={createListItem} />
+                      createListItem={createListItem} 
+                      deleteList={deleteList} />
         ))
     }
 
