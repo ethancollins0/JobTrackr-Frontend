@@ -27,12 +27,12 @@ export default class CreateListItem extends Component {
                     <input name='company' 
                            onChange={this.handleChange} 
                            value={this.state.company} 
-                           placeholder='Enter Company'>
+                           placeholder='Enter Company' required>
                      </input>
                     <input name='title' 
                            onChange={this.handleChange} 
                            value={this.state.title}
-                           placeholder='Enter Job Title'>
+                           placeholder='Enter Job Title' required>
                     </input>
                     <input name='link' 
                            onChange={this.handleChange} 

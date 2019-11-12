@@ -2,15 +2,7 @@ import React from 'react'
 import TodoList from './TodoList'
 import './Todo.scss'
 
-// const stickyNoteColors = [
-//     '#ff7eb9',
-//     '#ff65a3',
-//     '#7afcff',
-//     '#feff9c',
-//     '#fff740',
-// ]
-
-function ToDoContainer({ lists, createListItem, showForm, deleteList }){
+function ToDoContainer({ lists, createListItem, showForm, deleteList, deleteListItem }){
     const renderLists = () => {
         return lists.map(list => (
             <TodoList id={list.title.id} 
@@ -18,7 +10,8 @@ function ToDoContainer({ lists, createListItem, showForm, deleteList }){
                       title={list.title.name} 
                       items={list.items} 
                       createListItem={createListItem} 
-                      deleteList={deleteList} />
+                      deleteList={deleteList} 
+                      deleteListItem={deleteListItem} />
         ))
     }
 

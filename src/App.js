@@ -18,7 +18,8 @@ export default class App extends Component {
     ],
     showForm: false,
     selected: 0,
-    base_url: "http://192.168.0.3:3001",
+    base_url: "http://10.225.135.167:3001",
+    // base_url: 'http://localhost:3001',
     login_failed: false
   }
 
@@ -35,6 +36,7 @@ export default class App extends Component {
     })
     .then(res => res.json())
     .then(res => {
+      console.log(res)
       return res && res.token && res.data
         ? this.setState({ lists: res.data }, () => {
           window.localStorage.setItem('token', res.token)
@@ -144,6 +146,7 @@ export default class App extends Component {
       })
     }).then(res => res.json())
     .then(res => {
+      console.log(res)
       if (res && res == 1){
         let lists = this.state.lists
         lists = lists.filter(list => list.title.id != id )
@@ -153,6 +156,37 @@ export default class App extends Component {
       }
     })
   }
+
+  deleteListItem = (id) => {
+    fetch(this.state.base_url + '/list-item', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': window.localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        id
+      })
+    }).then(res => res.json())
+    .then(res => {
+      if (res && res.success) {
+        this.handleDeleteItem(id)
+      }
+    })
+  }
+
+  handleDeleteItem = (id) => {
+    let lists = this.state.lists
+    
+    lists.map(list => {
+      list.items = list.items.filter(item => {
+        return item.id != id ? item : null
+      })
+    })
+
+    this.setState({ lists })
+  }
+
 
   
   render(){
@@ -168,7 +202,7 @@ export default class App extends Component {
                 <div id='todo-page'>
                   <i onClick={this.toggleForm} id='add-list-button' className="fas fa-plus-square fa-2x"></i>
                   <CreateList createList={this.createList} showForm={this.state.showForm} />
-                  <ToDoContainer deleteList={this.deleteList} showForm={this.state.showForm} createListItem={this.createListItem} lists={this.state.lists}/>
+                  <ToDoContainer deleteListItem={this.deleteListItem} deleteList={this.deleteList} showForm={this.state.showForm} createListItem={this.createListItem} lists={this.state.lists}/>
                 </div>
               )
             }
